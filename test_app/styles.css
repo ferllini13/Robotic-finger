@@ -1,0 +1,28 @@
+.card-main {
+    margin: 2em;
+}
+
+.btn-primary {
+    border-radius: 20px;
+}
+
+.btn-squared {
+    border-radius: 0px;
+}
+
+.btn-round-ru {
+    border-radius: 0px 30px 0px 0px;
+}
+
+.row-pad {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.row-input {
+    margin-bottom: 2em;
+}
+
+.container {
+    margin-top: 25%;
+}
