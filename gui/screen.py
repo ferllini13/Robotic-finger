@@ -1,20 +1,28 @@
 from Tkinter import *
+import ttk
+import os
 
 window = Tk()
 window.title("Robotic Finger")
 window.geometry("500x430")
 
 def touch():
-    return
+	os.system("ls")
 
 def press():
-    return
+	resolution = cBox.get()
+	value = Secbox.get()
+	os.system("ls")
+
 
 def moveTo():
-    return
+	resolution=cBox.get()
+	value = keybox.get()
+	os.system("ls")
 
-Label(window,text="Set Screen Resolution",fg="black",font="none 12 bold").place(x=100,y=0)
 
+Label(window,text="Set Screen Resolution",fg="black",font="none 12 bold").place(x=80,y=0)
+cBox=ttk.Combobox(window, state="readonly",values=(" 1:1 ", " 2:2 ", " 3:3 ")).place(x=300,y=0)
 
 
 
