@@ -22,14 +22,17 @@ def moveTo():
 
 
 Label(window,text="Set Screen Resolution",fg="black",font="none 12 bold").place(x=80,y=0)
-cBox=ttk.Combobox(window, state="readonly",values=(" 1:1 ", " 2:2 ", " 3:3 ")).place(x=300,y=0)
+cBox=ttk.Combobox(window, state="readonly",values=(" 1:1 ", " 2:2 ", " 3:3 "))
+cBox.place(x=300,y=0)
 
 
 
-keybox=Entry(window,width=4, bg="white").place(x=70,y=230)
+keybox=Entry(window,width=4, bg="white")
+keybox.place(x=70,y=230)
 Label(window,text="KEY",fg="black",font="none 12 bold").place(x=100,y=230)
 
-Secbox=Entry(window,width=4, bg="white").place(x=350,y=120)
+Secbox=Entry(window,width=4, bg="white")
+Secbox.place(x=350,y=120)
 Label(window,text="SECONDS",fg="black",font="none 12 bold").place(x=380,y=120)
 
 
