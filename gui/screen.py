@@ -2,27 +2,72 @@ from Tkinter import *
 import ttk
 import os
 
+confFile="code.conf"
+
 window = Tk()
 window.title("Robotic Finger")
 window.geometry("500x430")
 
-def touch():
-	os.system("ls")
 
-def press():
-	resolution = cBox.get()
+def touch():
+	write("touch")
+
+def press(): 
 	value = Secbox.get()
-	os.system("ls")
+	write("press "+ str(value))
+
+
 
 
 def moveTo():
-	resolution=cBox.get()
 	value = keybox.get()
-	os.system("ls")
+	x=0
+	y=0
+	if int(value)==1:
+		x=0
+		y=0
+	elif int(value)==2:
+		x=0
+		y=1
+	elif int(value)==3:
+		x=0
+		y=2
+	elif int(value)==4:
+		x=1
+		y=0
+	elif int(value)==5:
+		x=1
+		y=1
+	elif int(value)==6:
+		x=1
+		y=2
+	elif int(value)==7:
+		x=2
+		y=0
+	elif int(value)==8:
+		x=2
+		y=1
+	elif int(value)==9:
+		x=2
+		y=2
+	else:
+		x=3
+		y=1
+
+	write("moveT " + str(x)+" " +str(y))
+
+
+def write(writeData):
+	resolution=cBox.get()
+	file = open(confFile,'w')
+	file.write("resolution "+ str(resolution)+"\n")
+	file.write(writeData)
+	file.close()
+	os.system("croboticFinger -c " + confFile)
 
 
 Label(window,text="Set Screen Resolution",fg="black",font="none 12 bold").place(x=80,y=0)
-cBox=ttk.Combobox(window, state="readonly",values=(" 1:1 ", " 2:2 ", " 3:3 "))
+cBox=ttk.Combobox(window, state="readonly",values=("1", "2", "4"))
 cBox.place(x=300,y=0)
 
 
