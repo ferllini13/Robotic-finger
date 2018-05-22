@@ -13,15 +13,21 @@ Servo servoPress, servoFinger, servoSpin;
 
 int btn = 0, screenResolution = 0, pressTime = 0, force = 5, downspeed = 20, pressBtn = 0;
 
-void setup() {  // This function is used to set de configuration of the arduino
+/*
+  This function is used to set de configuration of the arduino
+*/
+void setup() {
   servoPress.attach(6);
   servoFinger.attach(7);
   servoSpin.attach(8);
-  back();
+  back(); // Put the finger in the start position
   Serial.begin(9600);
   delay(1000);  // Wait 1 second to start the execution
 }
 
+/*
+  This function is a loop that manage all the incoming data from the device driver
+*/
 void loop() {
 
 //***Manual Calibration**************************************************************
@@ -43,7 +49,7 @@ void loop() {
 //    move3(spin);
 //    move1(posX);
 //
-//    delay(pressTime);
+//    delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
 //    back();
 //  }
 //***********************************************************************************
@@ -119,6 +125,9 @@ void loop() {
 
 }
 
+/*
+  Put the finger in the start position
+*/
 void back(){
   if(servoPress.read() < 90){
     for (int x = servoPress.read(); x <= 90; x += 1) {  // goes from actual position to 90 degrees
@@ -151,6 +160,10 @@ void back(){
   
 }
 
+/*
+  This function do the movement of the press servo
+  @param pos is used to set the final position of the finger
+*/
 void move1(int pos){
   if(servoPress.read() != pos){              // check if the servo is already in the position
     if(pos > 90){                            // check in which direction it should move
@@ -167,6 +180,10 @@ void move1(int pos){
   }
 }
 
+/*
+  This function do the movement of the finger servo
+  @param pos is used to set the final position of the finger
+*/
 void move2(int pos){
   if(servoFinger.read() != pos){             // check if the servo is already in the position
     for (int x = 0; x <= pos; x += 1) {      // goes from 0 degrees to a specific position
@@ -177,6 +194,10 @@ void move2(int pos){
   }
 }
 
+/*
+  This function do the movement of the spin servo
+  @param pos is used to set the final position of the finger
+*/
 void move3(int pos){
   if(servoSpin.read() != pos){               // check if the servo is already in the position
     if(pos > 90){                            // check in which direction it should move
@@ -194,7 +215,11 @@ void move3(int pos){
   }
 }
 
-void button1(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button1(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(9);
@@ -211,7 +236,11 @@ void button1(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton1(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton1(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(154 + force);
@@ -223,11 +252,15 @@ void pressButton1(){            // Function to press the button
       move1(154 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button2(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button2(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(9);
@@ -244,7 +277,11 @@ void button2(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton2(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton2(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(153 + force);
@@ -256,11 +293,15 @@ void pressButton2(){            // Function to press the button
       move1(153 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button3(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button3(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(9);
@@ -277,7 +318,11 @@ void button3(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton3(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton3(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(156 + force);
@@ -289,11 +334,15 @@ void pressButton3(){            // Function to press the button
       move1(156 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button4(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button4(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(18);
@@ -310,7 +359,11 @@ void button4(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton4(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton4(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(154 + force);
@@ -322,11 +375,15 @@ void pressButton4(){            // Function to press the button
       move1(154 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button5(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button5(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(18);
@@ -343,7 +400,11 @@ void button5(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton5(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton5(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(154 + force);
@@ -355,11 +416,15 @@ void pressButton5(){            // Function to press the button
       move1(154 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button6(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button6(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(19);
@@ -376,7 +441,11 @@ void button6(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton6(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton6(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(153 + force);
@@ -388,11 +457,15 @@ void pressButton6(){            // Function to press the button
       move1(153 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button7(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button7(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(29);
@@ -409,7 +482,11 @@ void button7(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton7(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton7(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(155 + force);
@@ -421,11 +498,15 @@ void pressButton7(){            // Function to press the button
       move1(155 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button8(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button8(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(29);
@@ -442,7 +523,11 @@ void button8(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton8(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton8(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(152 + force);
@@ -454,11 +539,15 @@ void pressButton8(){            // Function to press the button
       move1(152 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button9(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button9(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(29);
@@ -475,7 +564,11 @@ void button9(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton9(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton9(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(154 + force);
@@ -487,11 +580,15 @@ void pressButton9(){            // Function to press the button
       move1(154 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
-void button0(){                 // Function to put the finger in position to press the button
+/*
+  This function call the move function to set the position in the desired position
+  depending on the button selected
+*/
+void button0(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Move the finger to the position in that resolution
       move2(0);
@@ -508,7 +605,11 @@ void button0(){                 // Function to put the finger in position to pre
   }
 }
 
-void pressButton0(){            // Function to press the button
+/*
+  Function to press the button. Call the function move, that move the finger doing
+  the press action
+*/
+void pressButton0(){
   switch (screenResolution) {   // Checks the current resolution
     case 1:                     // Press with certain force (in a specific resolution)
       move1(158 + force);
@@ -520,7 +621,7 @@ void pressButton0(){            // Function to press the button
       move1(158 + force);
       break;
   }
-  delay(pressTime);
+  delay(pressTime); // Time in seconds that the finger has to wait pressing the button, if touch pressTime = 0
   back();
 }
 
