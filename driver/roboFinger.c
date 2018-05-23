@@ -6,7 +6,6 @@
 #include <asm/uaccess.h>
 
 #define DEVICE_NAME "robofinger"
-#define CLASS_NAME "rbf" 
 #define DEVICE_MAX_PATH 20
 #define DEVICE_NUM 0
 #define DEVICE_MAX_BUF_LEN 200
@@ -97,7 +96,6 @@ static struct file *device = NULL;
  */
 static int robo_open(struct inode *inodep, struct file *filep)
 {
-    printk(KERN_INFO "RoboFinger opened.\n");
     char filename[DEVICE_MAX_PATH];
 
     if(!(mutex_trylock(&dev_mutex))) // Multiprocess syncronization.
@@ -106,13 +104,14 @@ static int robo_open(struct inode *inodep, struct file *filep)
         return -EBUSY;
     }
 
+    printk(KERN_INFO "RoboFinger opened.\n");
     snprintf(filename, DEVICE_MAX_PATH, "/dev/ttyACM%d", DEVICE_NUM);
     device = filp_open(filename, 0, O_RDWR);
     if (PTR_RET(device)) {
         mutex_unlock(&dev_mutex);
+        printk(KERN_INFO "RoboFinger opened.\n");
         return PTR_RET(device);
     }
-
     return 0;
 }
 
@@ -122,17 +121,16 @@ static int robo_open(struct inode *inodep, struct file *filep)
  *  @param filep A pointer to a file object (defined in linux/fs.h)
  *  @return returns 0 if successful.
  */
-static int robo_release(struct inode *p, struct file *filep)
+static int robo_release(struct inode *inodep, struct file *filep)
 {
     if(!IS_ERR_OR_NULL(device))
         filp_close(device, 0);
     mutex_unlock(&dev_mutex);
+    printk(KERN_INFO "RoboFinger released.");
     return 0;
 }
 
-/** @brief This function is called whenever the device is being written to from user space i.e.
- *  data is sent to the device from the user. The data is copied to the message[] array in this
- *  LKM using the sprintf() function along with the length of the string.
+/** @brief This function is called whenever the device is being written to from user space.
  *  @param filep A pointer to a file object
  *  @param buf The buffer to that contains the string to write to the device
  *  @param count The length of the array of data that is being passed in the const char buffer
