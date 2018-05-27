@@ -1,0 +1,96 @@
+<html ng-app="robotestapp">
+
+<head>
+    <title>Robotic Finger test</title>
+    <!--Bootstrap CCS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <!--Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9"
+        crossorigin="anonymous">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="styles.css">
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!--Bootstrap JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <!--Custom JS-->
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <div class="row" ng-controller="TestCtrl">
+        <div class="col">
+            <div class="card card-main">
+                <div class="card-header" id="code-field">
+                    <div class="row code-header">
+                        <div class="col">Code to input: {{code}}</div>
+                        <div class="col">
+                            <a href="" ng-click="reload()"><i class="fas fa-sync-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row row-input">
+                        <div class="col">
+                            <input class="form-control form-control-lg" id="main-input" type="text" ng-model="inputCode">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-1" ng-click="appendNum(1)">1</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-2" ng-click="appendNum(2)">2</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-3" ng-click="appendNum(3)">3</button>
+                                </div>
+                            </div>
+                            <div class="row row-pad">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-4" ng-click="appendNum(4)">4</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-5" ng-click="appendNum(5)">5</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-6" ng-click="appendNum(6)">6</button>
+                                </div>
+                            </div>
+                            <div class="row row-pad">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-7" ng-click="appendNum(7)">7</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-8" ng-click="appendNum(8)">8</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-9" ng-click="appendNum(9)">9</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-0" ng-click="appendNum(0)">0</button>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

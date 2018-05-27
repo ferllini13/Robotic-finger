@@ -1,6 +1,0 @@
-resolution R
-moveT X Y
-moveP X Y T
-move X Y
-touch
-press T
