@@ -17,9 +17,9 @@ int btn = 0, screenResolution = 0, pressTime = 0, force = 5, downspeed = 20, pre
   This function is used to set de configuration of the arduino
 */
 void setup() {
-  servoPress.attach(6);
-  servoFinger.attach(7);
-  servoSpin.attach(8);
+  servoFinger.attach(9);
+  servoSpin.attach(10);
+  servoPress.attach(11);
   back(); // Put the finger in the start position
   Serial.begin(9600);
   delay(1000);  // Wait 1 second to start the execution
@@ -229,7 +229,7 @@ void button1(){
       move2(9);
       move3(103);
       break;
-    case 3:
+    case 4:
       move2(9);
       move3(103);
       break;
@@ -248,7 +248,7 @@ void pressButton1(){
     case 2:
       move1(154 + force);
       break;
-    case 3:
+    case 4:
       move1(154 + force);
       break;
   }
@@ -270,7 +270,7 @@ void button2(){
       move2(9);
       move3(94);
       break;
-    case 3:
+    case 4:
       move2(9);
       move3(94);
       break;
@@ -289,7 +289,7 @@ void pressButton2(){
     case 2:
       move1(153 + force);
       break;
-    case 3:
+    case 4:
       move1(153 + force);
       break;
   }
@@ -311,7 +311,7 @@ void button3(){
       move2(9);
       move3(86);
       break;
-    case 3:
+    case 4:
       move2(9);
       move3(86);
       break;
@@ -330,7 +330,7 @@ void pressButton3(){
     case 2:
       move1(156 + force);
       break;
-    case 3:
+    case 4:
       move1(156 + force);
       break;
   }
@@ -352,7 +352,7 @@ void button4(){
       move2(18);
       move3(102);
       break;
-    case 3:
+    case 4:
       move2(18);
       move3(102);
       break;
@@ -371,7 +371,7 @@ void pressButton4(){
     case 2:
       move1(154 + force);
       break;
-    case 3:
+    case 4:
       move1(154 + force);
       break;
   }
@@ -393,7 +393,7 @@ void button5(){
       move2(18);
       move3(94);
       break;
-    case 3:
+    case 4:
       move2(18);
       move3(94);
       break;
@@ -412,7 +412,7 @@ void pressButton5(){
     case 2:
       move1(154 + force);
       break;
-    case 3:
+    case 4:
       move1(154 + force);
       break;
   }
@@ -434,7 +434,7 @@ void button6(){
       move2(19);
       move3(86);
       break;
-    case 3:
+    case 4:
       move2(19);
       move3(86);
       break;
@@ -453,7 +453,7 @@ void pressButton6(){
     case 2:
       move1(153 + force);
       break;
-    case 3:
+    case 4:
       move1(153 + force);
       break;
   }
@@ -475,7 +475,7 @@ void button7(){
       move2(29);
       move3(102);
       break;
-    case 3:
+    case 4:
       move2(29);
       move3(102);
       break;
@@ -494,7 +494,7 @@ void pressButton7(){
     case 2:
       move1(155 + force);
       break;
-    case 3:
+    case 4:
       move1(155 + force);
       break;
   }
@@ -516,7 +516,7 @@ void button8(){
       move2(29);
       move3(94);
       break;
-    case 3:
+    case 4:
       move2(29);
       move3(94);
       break;
@@ -535,7 +535,7 @@ void pressButton8(){
     case 2:
       move1(152 + force);
       break;
-    case 3:
+    case 4:
       move1(152 + force);
       break;
   }
@@ -557,7 +557,7 @@ void button9(){
       move2(29);
       move3(88);
       break;
-    case 3:
+    case 4:
       move2(29);
       move3(88);
       break;
@@ -576,7 +576,7 @@ void pressButton9(){
     case 2:
       move1(154 + force);
       break;
-    case 3:
+    case 4:
       move1(154 + force);
       break;
   }
@@ -598,7 +598,7 @@ void button0(){
       move2(0);
       move3(100);
       break;
-    case 3:
+    case 4:
       move2(0);
       move3(100);
       break;
@@ -617,7 +617,7 @@ void pressButton0(){
     case 2:
       move1(158 + force);
       break;
-    case 3:
+    case 4:
       move1(158 + force);
       break;
   }
