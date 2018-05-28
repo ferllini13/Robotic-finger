@@ -13,7 +13,7 @@ int main()
     int ret, fd;
     char stringToSend[BUFFER_LENGTH];
     printf("Starting device test code example...\n");
-    fd = open("/dev/robofinger", O_WRONLY | 0_NOCTTY); // Open the device with read/write access
+    fd = open("/dev/robofinger", O_WRONLY | O_NOCTTY); // Open the device with read/write access
     if (fd < 0)
     {
         perror("Failed to open the device...");

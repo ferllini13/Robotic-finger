@@ -141,11 +141,11 @@ static ssize_t robo_write(struct file *filep,
                  const char __user * buf, size_t count,
                  loff_t * f_pos)
 {
-    printk(KERN_INFO "User writing %d characters into RoboFinger.\n", (int)count);
     const char kbuf[DEVICE_MAX_BUF_LEN];
     int result;
     mm_segment_t oldfs;
 
+	printk(KERN_INFO "User writing %d characters into RoboFinger.\n", (int)count);
     count = count < DEVICE_MAX_BUF_LEN ? count : DEVICE_MAX_BUF_LEN;
     if (copy_from_user((char *)kbuf, (const char __user *)buf, count))
         return -EFAULT;

@@ -2,7 +2,9 @@ from Tkinter import *
 import ttk
 import os
 
-confFile="code.conf"   #configuration file
+confFile="../Interpreter/code.conf"   #configuration file
+
+lastPos = 10
 
 window = Tk()
 window.title("Robotic Finger")
@@ -10,15 +12,18 @@ window.geometry("500x430")
 
 #if press touch
 def touch():
-	write("touch") #call the write out fuction
-
+	write("moveS " + str(lastPos) +"\ntouch") #call the write out fuction
+	global lastPos
+	lastPos = 10
 #if press press
 def press(): 
 	value = Secbox.get()#get the seconds to press
 	if str(value)!="":
-		write("press "+ str(value))
+		write("moveS " + str(lastPos) +"\npress "+ str(value))
+		global lastPos
+		lastPos = 10
 	else:
-		print("not input detected:seconds")#call the write out fuction
+		print("Not input detected: seconds")#call the write out fuction
 
 
 
@@ -26,43 +31,11 @@ def press():
 def moveTo():
 	value = keybox.get()# get the key to move to
 	if str(value)=="":
-		print("not input detected:position")
+		print("Not input detected: position")
 		return
-	x=0
-	y=0
-	# ifs to convert key to x,y 
-	if int(value)==1:
-		x=0
-		y=0
-	elif int(value)==2:
-		x=0
-		y=1
-	elif int(value)==3:
-		x=0
-		y=2
-	elif int(value)==4:
-		x=1
-		y=0
-	elif int(value)==5:
-		x=1
-		y=1
-	elif int(value)==6:
-		x=1
-		y=2
-	elif int(value)==7:
-		x=2
-		y=0
-	elif int(value)==8:
-		x=2
-		y=1
-	elif int(value)==9:
-		x=2
-		y=2
-	else:
-		x=3
-		y=1
-	
-	write("moveT " + str(x)+" " +str(y))#call the write out fuction 
+	global lastPos
+	lastPos = value
+	write("move " + str(value))#call the write out fuction 
 		
 
 # write the configuration file
@@ -73,9 +46,11 @@ def write(writeData):
 		file.write("resolution "+ str(resolution)+"\n")# write the resolucion
 		file.write(writeData)#write the data form buttons
 		file.close()# close the file 
-		os.system("croboticFinger -c " + confFile)# call the interpreter
+		os.chdir("../Interpreter/")# move to the interpreter file position
+		os.system("./roboticFinger -c " + confFile)# call the interpreter
 	else:
-		print("not input detected:resolution")
+		print("Not input detected: resolution")
+
 		
 
 #to set the resolution with combobox

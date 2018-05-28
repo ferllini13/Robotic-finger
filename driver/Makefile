@@ -1,3 +1,4 @@
+
 kmod = roboFinger
 ifneq ($(KERNELRELEASE),)
 obj-m := $(kmod).o
@@ -16,6 +17,9 @@ unload:
 
 clean:
 	$(MAKE) -C $(KDIR) M=$$PWD clean
+
+read:
+	tail -f /var/log/kern.log 
 
 .PHONY  : clean
 endif
