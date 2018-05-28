@@ -26,12 +26,11 @@ def press():
 #if press move to
 def moveTo():
 	value = keybox.get()# get the key to move to
-	global lastPos
-	lastPos = value
 	if str(value)=="":
 		print("Not input detected: position")
 		return
-	
+	global lastPos
+	lastPos = value
 	write("move " + str(value))#call the write out fuction 
 		
 
@@ -43,9 +42,11 @@ def write(writeData):
 		file.write("resolution "+ str(resolution)+"\n")# write the resolucion
 		file.write(writeData)#write the data form buttons
 		file.close()# close the file 
-		os.system("croboticFinger -c " + confFile)# call the interpreter
+		os.chdir("../Interpreter/")# move to the interpreter file position
+		os.system("./roboticFinger -c " + confFile)# call the interpreter
 	else:
 		print("Not input detected: resolution")
+
 		
 
 #to set the resolution with combobox

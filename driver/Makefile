@@ -16,7 +16,6 @@ unload:
 
 clean:
 	$(MAKE) -C $(KDIR) M=$$PWD clean
-	rm test
 
 read:
 	tail -f /var/log/kern.log 

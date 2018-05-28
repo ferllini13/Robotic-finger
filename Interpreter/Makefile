@@ -1,5 +1,5 @@
 all:
-	gcc -o roboticFinger roboticFinger.c -I./ ../Library/roboticFingerLib.a -lm  #For the compilation
+	gcc -o roboticFinger roboticFinger.c
 
 clean:
 	rm roboticFinger

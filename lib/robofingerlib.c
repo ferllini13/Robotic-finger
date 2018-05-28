@@ -29,13 +29,13 @@ int robo_write(char *cmd)
 
 void setResolution (int pResolution){
     resolution = pResolution;
-    printf("Setting resolution in %d\n\n", resolution);
+    printf("\nSetting resolution in %d\n", resolution);
 }
 void setMoveT (int pBtn){
     btn = pBtn; //Set selected btn
     press = 1; //Set the press flag to 1
 
-    char str[8];
+    char str[20];
     
     char tmpBtn[10];
     sprintf(tmpBtn, "%d", btn);
@@ -59,7 +59,7 @@ void setMoveT (int pBtn){
     strcat(str, ",");   
     strcat(str, tmpPress);
     strcat(str, ",0");
-    printf("Command:\t%d,%d,%d,0\n", pBtn, resolution, press);
+   // printf("Command:\t%d,%d,%d,0\n", pBtn, resolution, press);
     if (robo_write(str) == 0){
         printf("Done\n\n");
     } else {
@@ -98,7 +98,7 @@ void setMoveP (int pBtn, int pTime){
     strcat(str, tmpPress);
     strcat(str, ",");
     strcat(str, tmpTime);    
-    printf("Command:\t%d,%d,%d,%d\n", pBtn, resolution, press, pTime);
+   // printf("Command:\t%d,%d,%d,%d\n", pBtn, resolution, press, pTime);
     if (robo_write(str) == 0){
         printf("Done\n\n");
     } else {
@@ -107,7 +107,7 @@ void setMoveP (int pBtn, int pTime){
 }
 void setMoveS (int pBtn){
     btn = pBtn; //Set selected btn
-    printf("Setting position in %d\n\n", btn);
+    printf("Setting position in %d\n", btn);
 }
 
 void setMove (int pBtn){
@@ -138,7 +138,7 @@ void setMove (int pBtn){
     strcat(str, ",");   
     strcat(str, tmpPress);
     strcat(str, ",0");
-    printf("Command:\t%d,%d,%d,0\n", pBtn, resolution, press);
+   // printf("Command:\t%d,%d,%d,0\n", pBtn, resolution, press);
     if (robo_write(str) == 0){
         printf("Done\n\n");
     } else {
@@ -172,7 +172,7 @@ void setTouch (){
     strcat(str, ",");   
     strcat(str, tmpPress);
     strcat(str, ",0");
-    printf("Command:\t%d,%d,%d,0\n", btn, resolution, press);
+   // printf("Command:\t%d,%d,%d,0\n", btn, resolution, press);
     if (robo_write(str) == 0){
         printf("Done\n\n");
     } else {
@@ -210,7 +210,7 @@ void setPress (int pTime){
     strcat(str, tmpPress);
     strcat(str, ",");
     strcat(str, tmpTime); 
-    printf("Command:\t%d,%d,%d,%d\n", btn, resolution, press, pTime);
+   // printf("Command:\t%d,%d,%d,%d\n", btn, resolution, press, pTime);
     if (robo_write(str) == 0){
         printf("Done\n\n");
     } else {
@@ -219,7 +219,7 @@ void setPress (int pTime){
 }
 
 void reset (){
-    printf("Setting initial position");
+    printf("Do nothing\n");
      if (robo_write("10,10,10,10") == 0){
         printf("Done\n\n");
     } else {
