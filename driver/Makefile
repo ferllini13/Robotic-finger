@@ -8,6 +8,8 @@ KDIR ?= /lib/modules/$$(uname -r)/build
 
 all:
 	$(MAKE) -C $(KDIR) M=$$PWD modules
+	sudo cp 99-robofinger.rules /etc/udev/rules.d/
+	sudo udevadm control --reload-rules && udevadm trigger
 
 load:
 	sudo insmod $(kmod).ko
