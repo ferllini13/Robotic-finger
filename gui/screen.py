@@ -12,15 +12,15 @@ window.geometry("500x430")
 
 #if press touch
 def touch():
-	write("moveS " + str(lastPos) +"\ntouch") #call the write out fuction
 	global lastPos
+	write("moveS " + str(lastPos) +"\ntouch") #call the write out fuction
 	lastPos = 10
 #if press press
 def press(): 
 	value = Secbox.get()#get the seconds to press
 	if str(value)!="":
-		write("moveS " + str(lastPos) +"\npress "+ str(value))
 		global lastPos
+		write("moveS " + str(lastPos) +"\npress "+ str(value))
 		lastPos = 10
 	else:
 		print("Not input detected: seconds")#call the write out fuction
