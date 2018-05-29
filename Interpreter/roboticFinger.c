@@ -3,7 +3,11 @@
 #include <string.h>
 #include "../lib/robofingerlib.c"
 
-
+/**
+ * This function validates that the selected button is
+ * inside the bounds [0-9]. The parameter btn receives
+ * the selected button.
+ */
 int validatePosition(int btn){
     if (btn >= 0 && btn <= 9){
         return 1;
@@ -16,7 +20,8 @@ int validatePosition(int btn){
 /**
  * This function read the specified code from the file
  * and do the interpreter work. Use the driver library
- * to send the information to the driver.
+ * to send the information to the driver by the
+ * implemented functions.
  */
 int main (char argc, char * argv[]) {    
     FILE * fp;    

@@ -8,6 +8,11 @@
 
 int btn = 0, resolution = 0, press = 0;
 
+/**
+ * This function write the message to the USB,
+ * sending the message/command recieved by the parameter
+ * cmd.
+ */
 int robo_write(char *cmd)
 {
     int ret, fd;
@@ -17,7 +22,7 @@ int robo_write(char *cmd)
         perror("Failed to open RoboFinger. Is it plugged in?");
         return errno;
     }
-    printf("Command:\t%s\n", cmd);
+    printf("Command:\t*%s*\n", cmd);
     ret = write(fd, cmd, strlen(cmd));
     if (ret < 0)
     {
@@ -27,10 +32,22 @@ int robo_write(char *cmd)
     return 0;
 }
 
+/**
+ * This function sets the selected resolution to be sent to 
+ * the device. The resolution is recieved by the parameter 
+ * pResolution.
+ */
 void setResolution (int pResolution){
     resolution = pResolution;
     printf("\nSetting resolution in %d\n", resolution);
 }
+
+/**
+ * This function receive the number of the button to which
+ * will be touched, it also sets the button value. It send
+ * the move and touch instruction to the device. The
+ * parameter pBtn receives the button value.
+ */
 void setMoveT (int pBtn){
     btn = pBtn; //Set selected btn
     press = 1; //Set the press flag to 1
@@ -66,6 +83,15 @@ void setMoveT (int pBtn){
         printf("Error\n\n");
     }
 }
+
+/**
+ * This function receives the number of the button which
+ * will be pressed by a specified amount of time, it also
+ * sets the button value. It send the move and press
+ * instruction to the device. The parameter pBtn receives the
+ * button value, and the parameter pTime receives the number
+ * of seconds that the button will be pressed.
+ */
 void setMoveP (int pBtn, int pTime){
     btn = pBtn; //Set selected btn
     press = 1; //Set the press flag to 1
@@ -105,11 +131,21 @@ void setMoveP (int pBtn, int pTime){
         printf("Error\n\n");
     }
 }
+
+/**
+ * This function sets the value of the last movement to use it later.
+ * The parameter pBtn receives the button value.
+ */
 void setMoveS (int pBtn){
     btn = pBtn; //Set selected btn
     printf("Setting position in %d\n", btn);
 }
 
+/**
+ * This function receives the number of the button and send the move
+ * instruction to the device, it also sets the button value. The
+ * parameter pBtn receives the button value.
+ */
 void setMove (int pBtn){
     btn = pBtn; //Set selected btn
     press = 0; //Set the press flag to 0
@@ -145,6 +181,11 @@ void setMove (int pBtn){
         printf("Error\n\n");
     }
 }
+
+/**
+ * This function sends the touch instruction to the device in
+ * the last settled position (it ignores the initial position).
+ */ 
 void setTouch (){
     press = 1; //Set the press flag to 1
 
@@ -179,6 +220,13 @@ void setTouch (){
         printf("Error\n\n");
     }
 }
+
+/**
+ * This function sends the press instruction with the number of
+ * seconds to the device in the last settled position (it ignores
+ * the initial position). The parameter pTime receives the number
+ * of seconds that the button will be pressed.
+ */ 
 void setPress (int pTime){
     press = 1; //Set the press flag to 1
 
@@ -218,6 +266,11 @@ void setPress (int pTime){
     }
 }
 
+/**
+ * This function is used when the values read by the interpreter
+ * are out of bounds. Sends a "do nothing" instruction to the
+ * device.
+ */
 void reset (){
     printf("Do nothing\n");
      if (robo_write("10,10,10,10") == 0){
