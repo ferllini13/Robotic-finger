@@ -20,7 +20,7 @@ runServer:
 	@cd test_app && live-server --port=8000
 
 run:
-	@cd gui/ && python2 screen.py
+	python2 gui/screen.py
 
 
 runInterpreter:

@@ -2,7 +2,7 @@ from Tkinter import *
 import ttk
 import os
 
-confFile="../Interpreter/code.conf"   #configuration file
+confFile="./Interpreter/code.conf"   #configuration file
 
 lastPos = 10
 
@@ -46,8 +46,7 @@ def write(writeData):
 		file.write("resolution "+ str(resolution)+"\n")# write the resolucion
 		file.write(writeData)#write the data form buttons
 		file.close()# close the file 
-		os.chdir("../Interpreter/")# move to the interpreter file position
-		os.system("./roboticFinger -c " + confFile)# call the interpreter
+		os.system("roboticFinger -c " + confFile)# call the interpreter
 	else:
 		print("Not input detected: resolution")
 
